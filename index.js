@@ -15,10 +15,10 @@ const onReady = () => {
 
     Client.user.setPresence({
         status: "online",
-        game: {
-            name: "the students",
-            type: "WATCHING"
-        }
+        activities: [{
+            name: "you",
+            type: Discord.ActivityType.Watching
+        }]
     });
 
     console.log('Ready!');
