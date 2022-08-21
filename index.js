@@ -16,7 +16,7 @@ const onReady = () => {
     Client.user.setPresence({
         status: "online",
         activities: [{
-            name: "you",
+            name: "you grow",
             type: Discord.ActivityType.Watching
         }]
     });
@@ -29,6 +29,9 @@ const onReady = () => {
 let interactionHandler = async (interaction) => {
     
     let { commandName } = interaction;
+
+    console.log(`[${new Date().getTime()}] INTFROM: ${interaction.user.id}`);
+
     interactionHandlers[commandName](interaction).catch((error) => {
         interaction.reply({content:"Error while processing command.",ephemeral:true}).catch(error_ => {
             console.log(`[${new Date().getTime()}] ERR:\n`);

@@ -29,7 +29,8 @@ const post = async (interaction) => {
 
     let role = options.getRole('mention',false);
 
-    let delay = options.getNumber('delay',false)
+    let delay = options.getNumber('delay',false);
+    delay = (delay && delay > 0)? delay : 0;
 
     let channel = options.getChannel('channel', true);
 
@@ -38,8 +39,13 @@ const post = async (interaction) => {
     let attachment = options.getAttachment('file', false);
     let url = attachment?.url;
 
-    let embed = new Discord.EmbedBuilder().setTitle(title).setTimestamp(new Date().getTime()).setColor(colour).setFooter({text:'The Manipal Convocal'});
+    let thumbnail = options.getString('thumbnail',false);
+    let image = options.getString('image',false)
 
+    let embed = new Discord.EmbedBuilder().setTitle(title).setTimestamp(new Date().getTime()).setColor(colour).setFooter({text:'The Manipal Convocal'}).setImage(image).setThumbnail(thumbnail);
+
+    message = message.replaceAll(/\\n/g,"\n");
+    
     if(!linkintitle && url){
         embed.setDescription(`${message}\n\nLink to resource [here.](${url})`);
     }

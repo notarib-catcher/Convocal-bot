@@ -11,10 +11,13 @@ const attachment = new SlashCommandAttachmentOption().setName('file').setRequire
 const colour = new SlashCommandStringOption().setName('colour').setRequired(false).setDescription('HEX Colour code for the attachment (Default: None)');
 const delay = new SlashCommandNumberOption().setName('delay').setRequired(false).setDescription('Time to delay the message (seconds)');
 const linkintitle = new SlashCommandBooleanOption().setName('linkintitle').setRequired(false).setDescription('Do you want the link to the resource in the title or in the description? (Default: Description)');
+const thumbnail = new SlashCommandStringOption().setName('thumbnail').setRequired(false).setDescription('Set the URL to the thumbnail image');
+const image = new SlashCommandStringOption().setName('image').setRequired(false).setDescription('Set the URL to the embed image');
+
 
 const commands = [
     
-    (new SlashCommandBuilder().setName('post').setDescription('Post an embed').addChannelOption(channel).addStringOption(title).addStringOption(message).addAttachmentOption(attachment).addRoleOption(pickrole).addStringOption(colour).addNumberOption(delay).addBooleanOption(linkintitle)).toJSON(),
+    (new SlashCommandBuilder().setName('post').setDescription('Post an embed').addChannelOption(channel).addStringOption(title).addStringOption(message).addAttachmentOption(attachment).addStringOption(image).addStringOption(thumbnail).addRoleOption(pickrole).addStringOption(colour).addNumberOption(delay).addBooleanOption(linkintitle)).toJSON(),
     (new SlashCommandBuilder().setName('ping')).setDescription('Brighten your day!').toJSON()
 
 ]
